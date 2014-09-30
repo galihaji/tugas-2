@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <conio.h>
+
+int main() {
+    float hasil;
+    int a, b, c, i;
+    char operator[4]; // penanda operator
+    
+    // baris untuk memasukan perintah input
+    printf("\n\nSilahkan masukan angka pertama, \n");
+    printf("disusul dengan angka kedua, \n");
+    printf("kemudian operator sesuai dengan keterangan berikut\n");
+    printf("   - 1 = penambahan\n");
+    printf("   - 2 = pengurangan\n");
+    printf("   - 3 = perkalian\n");
+    printf("   - 4 = pembagian\n");
+    printf("   - 5 = pemangkatan\n");
+
+    scanf("%d", &a); // input angka pertama
+    scanf("%d", &b); // input angka kedua
+    scanf("%d", &c); // input operator
+    
+    switch(c) {
+        case 1: // tambah
+            hasil = a + b;
+            strcpy(operator, "+");
+            break;
+        case 2: // kurang
+            hasil = a - b;
+            strcpy(operator, "-");
+            break;
+        case 3: // kali
+            hasil = a * b;
+            strcpy(operator, "*");
+            break;
+        case 4: // bagi
+            hasil = 1.0 * a / b;
+            strcpy(operator, "/");
+            break;
+        case 5: // pangkat
+            hasil = 1;
+            for(i=0; i<b; i++) {
+                hasil = hasil * a;
+            }
+            strcpy(operator, "^");
+            break;
+        default:
+            hasil = 0;
+            strcpy(operator, "0");
+            break;
+    }
+
+    if (strcmp(operator, "0") != 0) {
+        printf("\n\n%d %s %d = %.2f\n\n", a, operator, b, hasil);
+    } else {
+        printf("\n\nmaaf operator aritmatika yang anda pilih tidak terdeteksi\n\n");
+    }
+    
+    return 0;
+}
